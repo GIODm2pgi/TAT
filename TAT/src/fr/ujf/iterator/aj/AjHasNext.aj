@@ -1,9 +1,10 @@
-package fr.ujf.iterator;
+package fr.ujf.iterator.aj;
+
 import fr.ujf.iterator.monitor.Event;
 import fr.ujf.iterator.monitor.Verdict;
 import fr.ujf.iterator.monitor.VerificationMonitor;
 
-public aspect HasNext {
+public aspect AjHasNext {
 	
 	public final static boolean enabled = true;
 

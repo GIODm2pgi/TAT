@@ -1,7 +1,7 @@
 package fr.ujf.iterator.monitor;
 
 public enum State {
-	DoHasNext("DoHasNext"), DoNext("DoNext"), Error("Error");
+	DoHasNext("DoHasNext"), DoNext("DoNext"), Error("Error"), NotStarted("NotStarted");
 	
 	private String name;
 	State (String name) {

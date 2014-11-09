@@ -6,7 +6,7 @@ public class VerificationMonitor {
 	private static final int DEFAULT_ID = -1;
 	private int id;
 	
-	private State currentState = State.DoHasNext;
+	private State currentState = State.NotStarted;
 	
 	public VerificationMonitor() {
 		this.id = DEFAULT_ID;
@@ -34,6 +34,16 @@ public class VerificationMonitor {
 				break;
 			case next: 
 				this.currentState = State.DoHasNext;
+				break;
+			}
+			break;
+		case NotStarted:
+			switch (e) {
+			case hasNext:
+				this.currentState = State.DoHasNext;
+				break;
+			case next: 
+				this.currentState = State.DoNext;
 				break;
 			}
 			break;

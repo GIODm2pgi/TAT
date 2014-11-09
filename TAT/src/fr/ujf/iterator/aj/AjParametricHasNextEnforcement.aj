@@ -1,4 +1,4 @@
-package fr.ujf.iterator;
+package fr.ujf.iterator.aj;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -8,9 +8,10 @@ import fr.ujf.iterator.monitor.Verdict;
 import fr.ujf.iterator.monitor.VerificationMonitor;
 
 @SuppressWarnings("rawtypes")
-public aspect ParametricHasNextEnforcement {
+public aspect AjParametricHasNextEnforcement {
 
 	public final static boolean enabled = true;
+	
 	HashMap<Iterator, VerificationMonitor> iteratorMap = new HashMap<Iterator, VerificationMonitor>();
 
 	public Verdict dispatchEvent(String concreteEventName, Iterator it) {

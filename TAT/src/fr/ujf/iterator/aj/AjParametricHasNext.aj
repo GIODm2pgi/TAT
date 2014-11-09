@@ -1,4 +1,4 @@
-package fr.ujf.iterator;
+package fr.ujf.iterator.aj;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -8,7 +8,7 @@ import fr.ujf.iterator.monitor.Verdict;
 import fr.ujf.iterator.monitor.VerificationMonitor;
 
 @SuppressWarnings("rawtypes")
-public aspect ParametricHasNext {
+public aspect AjParametricHasNext {
 
 	public final static boolean enabled = true;
 
