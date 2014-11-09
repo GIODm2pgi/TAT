@@ -1,4 +1,4 @@
-package fr.ujf.q3.m1;
+package fr.ujf.q3.monitor;
 
 public enum Verdict {
 	TRUE("true"),

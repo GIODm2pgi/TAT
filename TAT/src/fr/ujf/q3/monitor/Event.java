@@ -1,7 +1,7 @@
-package fr.ujf.q3.m3;
+package fr.ujf.q3.monitor;
 
 public enum Event {
-	hasNext ("hasNext"), next("next");
+	open ("open"), close("close"), write("wirte"), read("read");
 	
 	private String name;
 	Event (String name) {

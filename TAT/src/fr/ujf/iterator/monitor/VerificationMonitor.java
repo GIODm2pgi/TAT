@@ -5,19 +5,29 @@ public class VerificationMonitor {
 
 	private static final int DEFAULT_ID = -1;
 	private int id;
-	
+
 	private State currentState = State.NotStarted;
-	
+
 	public VerificationMonitor() {
 		this.id = DEFAULT_ID;
 	}
-	
+
 	public VerificationMonitor (int id) {
 		this.id = id;
 	}
 
 	public void updateState(Event e) {
 		switch (this.currentState) {
+		case NotStarted:
+			switch (e) {
+			case hasNext:
+				this.currentState = State.DoNext;
+				break;
+			case next: 
+				this.currentState = State.DoHasNext;
+				break;
+			}
+			break;
 		case DoHasNext:
 			switch (e) {
 			case hasNext:
@@ -37,16 +47,6 @@ public class VerificationMonitor {
 				break;
 			}
 			break;
-		case NotStarted:
-			switch (e) {
-			case hasNext:
-				this.currentState = State.DoHasNext;
-				break;
-			case next: 
-				this.currentState = State.DoNext;
-				break;
-			}
-			break;
 		case Error:
 			// No need to execute any code.
 			break;
@@ -58,6 +58,8 @@ public class VerificationMonitor {
 		case DoHasNext:
 			return Verdict.CURRENTLY_TRUE;
 		case DoNext:
+			return Verdict.CURRENTLY_TRUE;
+		case NotStarted:
 			return Verdict.CURRENTLY_TRUE;
 		case Error:
 			return Verdict.FALSE;

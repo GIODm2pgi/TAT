@@ -1,7 +1,7 @@
-package fr.ujf.q3.m1;
+package fr.ujf.q3.monitor;
 
 public enum State {
-	DoHasNext("DoHasNext"), DoNext("DoNext"), Error("Error");
+	NotStarted("NotStarted"), Opened("Opened"), Closed("Closed"), Error("Error");
 	
 	private String name;
 	State (String name) {

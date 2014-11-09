@@ -1,4 +1,4 @@
-package fr.ujf.q3.m2;
+package fr.ujf.q3.monitor;
 
 
 public class VerificationMonitor {
@@ -6,7 +6,7 @@ public class VerificationMonitor {
 	private static final int DEFAULT_ID = -1;
 	private int id;
 	
-	private State currentState = State.DoHasNext;
+	private State currentState = State.NotStarted;
 	
 	public VerificationMonitor() {
 		this.id = DEFAULT_ID;
@@ -18,25 +18,35 @@ public class VerificationMonitor {
 
 	public void updateState(Event e) {
 		switch (this.currentState) {
-		case DoHasNext:
+		case NotStarted:
 			switch (e) {
-			case hasNext:
-				this.currentState = State.DoNext;
+			case open:
+				this.currentState = State.Opened;
 				break;
-			case next: 
+			default: 
 				this.currentState = State.Error;
 				break;
 			}
 			break;
-		case DoNext:
+		case Opened:
 			switch (e) {
-			case hasNext:
+			case close:
+				this.currentState = State.Closed;
 				break;
-			case next: 
-				this.currentState = State.DoHasNext;
+			default:
 				break;
 			}
 			break;
+		case Closed:
+			switch (e) {
+			case open:
+				this.currentState = State.Opened;
+				break;
+			default:
+				this.currentState = State.Error;
+				break;
+			}
+			break;	
 		case Error:
 			// No need to execute any code.
 			break;
@@ -45,9 +55,9 @@ public class VerificationMonitor {
 
 	public Verdict currentVerdict () {
 		switch(this.currentState) {
-		case DoHasNext:
-			return Verdict.CURRENTLY_TRUE;
-		case DoNext:
+		case NotStarted:
+		case Opened:
+		case Closed:
 			return Verdict.CURRENTLY_TRUE;
 		case Error:
 			return Verdict.FALSE;

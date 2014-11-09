@@ -1,0 +1,62 @@
+package fr.ujf.iterator;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+
+public class IteratorINTENSE_USE {
+	
+	/**
+	 * Aj : AjParametricHasNext.aj
+	 * Config : no print in monitors 
+	 * Number of exec : 100
+	 * 
+	 * 					    avg execution time with monitor      (109.76)
+	 * Overhead in time = ------------------------------------ = ------- = 6,506
+	 *                     avg execution time without monitor    (16.87)
+	 */
+
+	public static void main (String args[]) {
+
+		long time = 0;
+		int N = 100;
+		
+		for (int i=0; i<N; i++){
+			long tmp = doService();
+			time +=tmp;
+			System.out.println(i + " / " + tmp);
+		}
+		
+		System.out.println(((double) time) / ((double) N));
+		
+	}
+	
+	public static long doService (){
+		
+		long startTime = System.currentTimeMillis();	
+
+		int N = 300;
+
+		List<Vector<String>> list = new ArrayList<Vector<String>>();
+		List<Iterator<String>> list_iterator = new ArrayList<Iterator<String>>();
+		for (int i=0; i<N; i++){
+			Vector<String> tmp = new Vector<String>();
+			for (int j=0; j<N; j++)
+				tmp.add("W"+j);
+			list.add(tmp);
+			list_iterator.add(tmp.iterator());
+		}
+
+		for (int k=0; k<N; k++){
+			while (list_iterator.get(k).hasNext())
+				list_iterator.get(k).next();
+		}
+
+		long stopTime = System.currentTimeMillis();
+		long elapsedTime = stopTime - startTime;
+		
+		return elapsedTime;
+	}
+
+}
