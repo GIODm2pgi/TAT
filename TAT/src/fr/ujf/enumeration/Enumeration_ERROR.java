@@ -3,7 +3,7 @@ package fr.ujf.enumeration;
 import java.util.Enumeration;
 import java.util.Vector;
 
-public class EnumerationERROR {
+public class Enumeration_ERROR {
 
 	public static void main (String args[]) {
 		Vector<Integer> v = new Vector<Integer>();

@@ -3,7 +3,7 @@ package fr.ujf.iterator;
 import java.util.Iterator;
 import java.util.Vector;
 
-public class IteratorOK_SIMPLE {
+public class Iterator_OK {
 
 	public static void main (String args[]) {
 

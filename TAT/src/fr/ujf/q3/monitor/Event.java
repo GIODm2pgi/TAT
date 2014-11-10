@@ -1,7 +1,7 @@
 package fr.ujf.q3.monitor;
 
 public enum Event {
-	open ("open"), close("close"), write("wirte"), read("read");
+	openWrite ("openWrite"), openRead ("openRead"), write("wirte"), read("read"), close("close");
 	
 	private String name;
 	Event (String name) {

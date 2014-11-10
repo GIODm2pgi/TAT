@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-public class IteratorINTENSE_USE {
+public class Iterator_INTENSE_USE {
 	
 	/**
 	 * Aj : AjParametricHasNext.aj

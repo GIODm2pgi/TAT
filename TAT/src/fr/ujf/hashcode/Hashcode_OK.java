@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class HashcodeOK {
+public class Hashcode_OK {
 
 	public static void main (String args[]) {
 		Set<Collection<String>> s = new HashSet<Collection<String>>();

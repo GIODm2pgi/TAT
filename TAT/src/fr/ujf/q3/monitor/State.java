@@ -1,7 +1,7 @@
 package fr.ujf.q3.monitor;
 
 public enum State {
-	NotStarted("NotStarted"), Opened("Opened"), Closed("Closed"), Error("Error");
+	OpenedWrite("OpenedWrite"), OpenedRead("OpenedRead"), Closed("Closed"), Error("Error");
 	
 	private String name;
 	State (String name) {

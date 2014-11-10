@@ -3,7 +3,7 @@ package fr.ujf.iterator;
 import java.util.Iterator;
 import java.util.Vector;
 
-public class IteratorERROR_DOUBLE_NEXT {
+public class Iterator_ERROR_DOUBLE_NEXT {
 
 	public static void main (String args[]) {
 

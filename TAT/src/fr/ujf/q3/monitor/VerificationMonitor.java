@@ -6,7 +6,7 @@ public class VerificationMonitor {
 	private static final int DEFAULT_ID = -1;
 	private int id;
 	
-	private State currentState = State.NotStarted;
+	private State currentState = State.Closed;
 	
 	public VerificationMonitor() {
 		this.id = DEFAULT_ID;
@@ -18,35 +18,43 @@ public class VerificationMonitor {
 
 	public void updateState(Event e) {
 		switch (this.currentState) {
-		case NotStarted:
+		case Closed:
 			switch (e) {
-			case open:
-				this.currentState = State.Opened;
+			case openWrite:
+				this.currentState = State.OpenedWrite;
+				break;
+			case openRead:
+				this.currentState = State.OpenedRead;
 				break;
 			default: 
 				this.currentState = State.Error;
 				break;
 			}
 			break;
-		case Opened:
+		case OpenedWrite:
 			switch (e) {
+			case write:
+				break;
 			case close:
 				this.currentState = State.Closed;
 				break;
-			default:
-				break;
-			}
-			break;
-		case Closed:
-			switch (e) {
-			case open:
-				this.currentState = State.Opened;
-				break;
-			default:
+			default: 
 				this.currentState = State.Error;
 				break;
 			}
-			break;	
+			break;
+		case OpenedRead:
+			switch (e) {
+			case read:
+				break;
+			case close:
+				this.currentState = State.Closed;
+				break;
+			default: 
+				this.currentState = State.Error;
+				break;
+			}
+			break;
 		case Error:
 			// No need to execute any code.
 			break;
@@ -55,10 +63,11 @@ public class VerificationMonitor {
 
 	public Verdict currentVerdict () {
 		switch(this.currentState) {
-		case NotStarted:
-		case Opened:
 		case Closed:
 			return Verdict.CURRENTLY_TRUE;
+		case OpenedRead:
+		case OpenedWrite:
+			return Verdict.CURRENTLY_FALSE;
 		case Error:
 			return Verdict.FALSE;
 		default:
