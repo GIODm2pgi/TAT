@@ -12,9 +12,9 @@ public class IteratorINTENSE_USE {
 	 * Config : no print in monitors 
 	 * Number of exec : 100
 	 * 
-	 * 					    avg execution time with monitor      (109.76)
-	 * Overhead in time = ------------------------------------ = ------- = 6,506
-	 *                     avg execution time without monitor    (16.87)
+	 * 					    avg execution time with monitor      (137.14)
+	 * Overhead in time = ------------------------------------ = ------- = 8.29
+	 *                     avg execution time without monitor    (16.54)
 	 */
 
 	public static void main (String args[]) {
@@ -36,7 +36,7 @@ public class IteratorINTENSE_USE {
 		
 		long startTime = System.currentTimeMillis();	
 
-		int N = 300;
+		int N = 500;
 
 		List<Vector<String>> list = new ArrayList<Vector<String>>();
 		List<Iterator<String>> list_iterator = new ArrayList<Iterator<String>>();
