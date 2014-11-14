@@ -12,9 +12,9 @@ public class Question3_ERROR_WRONG_ACCESS {
 		File f2 = new File("fichier2.txt");
 		
 		f1.open(MODE.READ);
-		f1.write();
+		f1.write(); //error: f1 is read only
 		f2.open(MODE.WRITE);
-		f2.read();
+		f2.read();  //error: f1 is write only
 		f2.close();
 		f1.close();
 		

@@ -16,6 +16,8 @@ public class Question3_ERROR_NO_CLOSE {
 		f2.open(MODE.WRITE);
 		f2.write();
 		
+		//CURRENTLY_FALSE: f1 never close
+		//CURRENTLY_FALSE: f2 never close
 	}
 
 }
