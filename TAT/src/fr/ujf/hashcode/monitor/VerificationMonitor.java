@@ -8,8 +8,6 @@ public class VerificationMonitor {
 
 	private State currentState = State.Modifiable;
 	
-	private int NUMBER_OF_SET = 0;
-
 	public VerificationMonitor() {
 		this.id = DEFAULT_ID;
 	}
@@ -24,7 +22,6 @@ public class VerificationMonitor {
 			switch (e) {
 			case setNotModifiable: 
 				this.currentState = State.NotModifiable;
-				NUMBER_OF_SET++;
 				break;
 			case setModifiable:
 			case modification:
@@ -34,14 +31,12 @@ public class VerificationMonitor {
 		case NotModifiable:
 			switch (e) {
 			case setModifiable:
-				if(--NUMBER_OF_SET == 0)
-					this.currentState = State.Modifiable;
+				this.currentState = State.Modifiable;
 				break;			
 			case modification:
 				this.currentState = State.Error;
 				break;
 			case setNotModifiable:
-				NUMBER_OF_SET++;
 				break;
 			}
 			break;
