@@ -1,6 +1,6 @@
 package fr.ujf.q3;
 
-import fr.ujf.q3.ressource.File;
+import fr.ujf.q3.resource.File;
 
 
 public class Question3_ERROR_NO_OPEN {

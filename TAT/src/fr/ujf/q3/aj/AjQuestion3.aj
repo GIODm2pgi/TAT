@@ -5,8 +5,8 @@ import java.util.HashMap;
 import fr.ujf.q3.monitor.Verdict;
 import fr.ujf.q3.monitor.VerificationMonitor;
 import fr.ujf.q3.monitor.Event;
-import fr.ujf.q3.ressource.File;
-import fr.ujf.q3.ressource.File.MODE;
+import fr.ujf.q3.resource.File;
+import fr.ujf.q3.resource.File.MODE;
 
 public aspect AjQuestion3 {
 

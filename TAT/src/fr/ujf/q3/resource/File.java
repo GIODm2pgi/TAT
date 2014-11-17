@@ -1,4 +1,4 @@
-package fr.ujf.q3.ressource;
+package fr.ujf.q3.resource;
 
 public class File {
 

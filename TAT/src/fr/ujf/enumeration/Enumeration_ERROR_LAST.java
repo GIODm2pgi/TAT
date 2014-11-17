@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import fr.ujf.enumeration.resource.Enumeration;
 
-public class Enumeration_ERROR {
+public class Enumeration_ERROR_LAST {
 
 	public static void main (String args[]) {
 		Vector<Integer> v = new Vector<Integer>();
@@ -17,7 +17,7 @@ public class Enumeration_ERROR {
 		
 		while(en.hasMoreElements()) {
 			Integer i = (Integer) en.nextElement();
-			if (i == 2) {
+			if (i == 3) {
 				v.add(4); /** ERROR **/
 			}
 		}

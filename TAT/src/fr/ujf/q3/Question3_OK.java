@@ -1,7 +1,7 @@
 package fr.ujf.q3;
 
-import fr.ujf.q3.ressource.File;
-import fr.ujf.q3.ressource.File.MODE;
+import fr.ujf.q3.resource.File;
+import fr.ujf.q3.resource.File.MODE;
 
 
 public class Question3_OK {

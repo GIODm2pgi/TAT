@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import fr.ujf.enumeration.resource.Enumeration;
 
-public class Enumeration_OK {
+public class Enumeration_OK_ADD {
 	
 	public static void main (String args[]) {
 		Vector<Integer> v1 = new Vector<Integer>();
@@ -22,8 +22,11 @@ public class Enumeration_OK {
 		
 		while(en1.hasMoreElements() && en2.hasMoreElements()) {
 			en1.nextElement();
-			en2.nextElement();				
+			en2.nextElement();			
 		}
+		
+		v1.add(1000);
+		v1.add(2000);
 	}
 	
 }
