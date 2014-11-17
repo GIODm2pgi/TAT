@@ -38,10 +38,10 @@ public aspect AjEnumaration {
 		return v;
 	}
 
-	pointcut addDs(Vector t): call (* Vector.add( * )) && target(t) && if(enabled);
-	pointcut removeDs(Vector t): call (* Vector.remove( * )) && target(t) && if(enabled);
-	pointcut createEnum(Enumeration t, Vector a): call (* Enumeration.create( * )) && target(t) && args(a) && if(enabled);
-	pointcut nextEnum(Enumeration t): call (* Enumeration.nextElement()) && target(t) && if(enabled);
+	pointcut addDs(Vector t): call (* Vector.add( * )) && target(t) && if(enabled) && within(fr.ujf.enumeration.*);
+	pointcut removeDs(Vector t): call (* Vector.remove( * )) && target(t) && if(enabled) && within(fr.ujf.enumeration.*);
+	pointcut createEnum(Enumeration t, Vector a): call (* Enumeration.create( * )) && target(t) && args(a) && if(enabled) && within(fr.ujf.enumeration.*);
+	pointcut nextEnum(Enumeration t): call (* Enumeration.nextElement()) && target(t) && if(enabled) && within(fr.ujf.enumeration.*);
 
 	before(Vector t) : addDs(t) {
 		if (!VerificationMonitor.dsState.containsKey(System.identityHashCode(t))){

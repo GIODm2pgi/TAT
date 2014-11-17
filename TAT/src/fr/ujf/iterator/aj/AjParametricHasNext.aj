@@ -37,8 +37,8 @@ public aspect AjParametricHasNext {
 		return v;
 	}
 
-	pointcut hasNext(Iterator it): call (boolean java.util.Iterator.hasNext()) && target(it) && if(enabled);
-	pointcut next(Iterator it): call (Object java.util.Iterator.next()) && target(it) && if(enabled);
+	pointcut hasNext(Iterator it): call (boolean java.util.Iterator.hasNext()) && target(it) && if(enabled) && within(fr.ujf.iterator.*);
+	pointcut next(Iterator it): call (Object java.util.Iterator.next()) && target(it) && if(enabled) && within(fr.ujf.iterator.*);
 
 	before(Iterator it) : hasNext(it) {
 		dispatchEvent("hasNext", it);

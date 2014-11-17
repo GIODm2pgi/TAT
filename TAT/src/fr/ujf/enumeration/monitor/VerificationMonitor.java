@@ -61,11 +61,11 @@ public class VerificationMonitor {
 	}
 
 	public void emitVerdict () {
-		//System.out.println("Monitor "+this.id+": "+currentVerdict());
+		System.out.println("Monitor "+this.id+": "+currentVerdict());
 	}
 
 	public Verdict receiveEvent(Event e, Integer i) {
-		//System.out.println("=> Monitor "+this.id+": received event "+e);
+		System.out.println("=> Monitor "+this.id+": received event "+e);
 		updateState(e,i);
 		emitVerdict();
 		return currentVerdict();
