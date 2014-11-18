@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="fr/ujf/iterator/aj/HasNext.aj|fr/ujf/iterator/ParametricHasNext.aj|fr/ujf/iterator/HasNext.aj|fr/ujf/iterator/ParametricHasNextEnforcement.aj|fr/ujf/iterator/aj/ParametricHasNextEnforcement.aj|fr/ujf/iterator/aj/HasNext_.aj|fr/ujf/iterator/aj/ParametricHasNextEnforcement_.aj|fr/ujf/iterator/aj/ParametricHasNext_.aj|fr/ujf/iterator/aj/AjHasNext.aj|fr/ujf/iterator/aj/AjParametricHasNext.aj" kind="src" path="src"/>
+	<classpathentry excluding="fr/ujf/iterator/aj/HasNext.aj|fr/ujf/iterator/ParametricHasNext.aj|fr/ujf/iterator/HasNext.aj|fr/ujf/iterator/ParametricHasNextEnforcement.aj|fr/ujf/iterator/aj/ParametricHasNextEnforcement.aj|fr/ujf/iterator/aj/HasNext_.aj|fr/ujf/iterator/aj/ParametricHasNextEnforcement_.aj|fr/ujf/iterator/aj/ParametricHasNext_.aj|fr/ujf/iterator/aj/AjHasNext.aj|fr/ujf/iterator/aj/AjParametricHasNext.aj|fr/ujf/enumeration/doc/|fr/ujf/q3/doc/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
