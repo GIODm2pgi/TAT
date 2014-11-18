@@ -27,14 +27,13 @@ public class Iterator_ERROR_DOUBLE_NEXT {
 		Iterator<String> it2 = words2.iterator();
 		
 		while(it1.hasNext() && it2.hasNext()) {
-			String w1a = (String) it1.next();
-			String w1b = (String) it1.next(); //error: next without hasNext before
+			it1.next();
+			it1.next(); //error: next without hasNext before
 			
-			String w2a = (String) it2.next();
-			String w2b = (String) it2.next(); //error: next without hasNext before
-
-			System.out.print("[({"+w1a+"}{"+w1b+"})({"+w2a+"}{"+w2b+"})]");
+			it2.next();
+			it2.next(); //error: next without hasNext before
 		}
+		
 	}
 
 }

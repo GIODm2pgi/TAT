@@ -32,6 +32,11 @@ public class VerificationMonitor {
 				this.ds = v;
 				this.state = dsState.get((Integer) v);
 				break;
+			case update:
+				if (!dsState.containsKey((Integer) v))
+					dsState.put((Integer) v, 0);
+				else
+					dsState.put((Integer) v, dsState.get((Integer) v) + 1);
 			case nextElement: {
 				Integer state1 = this.state;
 				Integer state2 = dsState.get(this.ds);
@@ -39,11 +44,6 @@ public class VerificationMonitor {
 					this.currentState = State.Error;
 				break;
 			}
-			case update:
-				if (!dsState.containsKey((Integer) v))
-					dsState.put((Integer) v, 0);
-				else
-					dsState.put((Integer) v, dsState.get((Integer) v) + 1);
 			default:
 				break;
 			}

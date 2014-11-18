@@ -7,6 +7,7 @@ import fr.ujf.enumeration.resource.Enumeration;
 public class Enumeration_OK_ADD {
 	
 	public static void main (String args[]) {
+		
 		Vector<Integer> v1 = new Vector<Integer>();
 		for (int i=0; i<5; i++)
 			v1.add(i);
@@ -27,6 +28,7 @@ public class Enumeration_OK_ADD {
 		
 		v1.add(1000);
 		v1.add(2000);
+		
 	}
 	
 }

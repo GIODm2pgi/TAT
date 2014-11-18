@@ -8,6 +8,7 @@ import java.util.Set;
 public class Hashcode_OK_TYPE_DOUBLE {
 
 	public static void main (String args[]) {
+		
 		Set<Collection<Double>> s1 = new HashSet<Collection<Double>>();
 		Set<Collection<Double>> s2 = new HashSet<Collection<Double>>();
 		Set<Collection<Double>> s3 = new HashSet<Collection<Double>>();
@@ -29,6 +30,10 @@ public class Hashcode_OK_TYPE_DOUBLE {
 		s3.add(c2);
 		s3.add(c3);
 		
+		// c1 in {s1, s3}
+		// c2 in {s1, s2, s3}
+		// c3 in {s3}
+		
 		s1.remove(c1);
 		s3.remove(c1);
 		c1.add(4.0);
@@ -40,5 +45,7 @@ public class Hashcode_OK_TYPE_DOUBLE {
 		
 		s3.remove(c3);
 		c3.add(6.4);
+		
 	}
+	
 }

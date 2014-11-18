@@ -8,6 +8,7 @@ import java.util.Set;
 public class Hashcode_ERROR_MULTIPLE_SET {
 
 	public static void main (String args[]) {
+		
 		Set<Collection<String>> s1 = new HashSet<Collection<String>>();
 		Set<Collection<String>> s2 = new HashSet<Collection<String>>();
 		Set<Collection<String>> s3 = new HashSet<Collection<String>>();
@@ -27,6 +28,7 @@ public class Hashcode_ERROR_MULTIPLE_SET {
 		//s3.remove(c);
 		
 		c.remove("ok");
+		
 	}
 	
 }

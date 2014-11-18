@@ -8,6 +8,7 @@ import java.util.Set;
 public class Hashcode_OK {
 
 	public static void main (String args[]) {
+		
 		Set<Collection<String>> s1 = new HashSet<Collection<String>>();
 		Set<Collection<String>> s2 = new HashSet<Collection<String>>();
 		Set<Collection<String>> s3 = new HashSet<Collection<String>>();
@@ -29,6 +30,10 @@ public class Hashcode_OK {
 		s3.add(c2);
 		s3.add(c3);
 		
+		// c1 in {s1, s3}
+		// c2 in {s1, s2, s3}
+		// c3 in {s3}
+		
 		s1.remove(c1);
 		s3.remove(c1);
 		c1.add("ok2");
@@ -40,5 +45,7 @@ public class Hashcode_OK {
 		
 		s3.remove(c3);
 		c3.add("ok2");
+		
 	}
+	
 }

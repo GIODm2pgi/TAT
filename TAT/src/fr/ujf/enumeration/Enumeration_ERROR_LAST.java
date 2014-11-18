@@ -7,6 +7,7 @@ import fr.ujf.enumeration.resource.Enumeration;
 public class Enumeration_ERROR_LAST {
 
 	public static void main (String args[]) {
+		
 		Vector<Integer> v = new Vector<Integer>();
 		v.add(1);
 		v.add(2);
@@ -18,8 +19,10 @@ public class Enumeration_ERROR_LAST {
 		while(en.hasMoreElements()) {
 			Integer i = (Integer) en.nextElement();
 			if (i == 3) {
-				v.add(4); /** ERROR **/
+				v.add(4); //error (no error if remove instead)
 			}
 		}
+		
 	}
+	
 }

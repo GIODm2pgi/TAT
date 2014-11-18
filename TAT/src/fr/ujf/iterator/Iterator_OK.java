@@ -29,6 +29,7 @@ public class Iterator_OK {
 			String w2 = (String) it2.next();
 			System.out.println("[("+w1+")("+w2+")]");
 		}
+		
 	}
 
 }
