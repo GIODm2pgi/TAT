@@ -25,9 +25,8 @@ public class Iterator_OK {
 		Iterator<String> it1 = words1.iterator();
 		Iterator<String> it2 = words2.iterator();
 		while(it1.hasNext() && it2.hasNext()) {
-			String w1 = (String) it1.next();
-			String w2 = (String) it2.next();
-			System.out.println("[("+w1+")("+w2+")]");
+			it1.next();
+			it2.next();
 		}
 		
 	}

@@ -31,6 +31,8 @@
 \def\verbatim{\setbox0\vbox\bgroup\oldv}
 \def\endverbatim{\oldendv\egroup\fboxsep0pt \colorbox[gray]{0.9}{\usebox0}\par}
 
+\setlength\parindent{0cm}
+
 %%%% Le Document %%%%
 
 \begin{document}
@@ -57,9 +59,142 @@
 
 \vspace{1cm}
 
-\section{Lecture et test d'invariant}
+\section{Iterator}
 
-\subsection{Invariant \no1}
+\subsection{Monitor et AspectJ}
+
+Cette partie du projet reprend la base fournie. L'automate implémenté est le
+suivant :
+
+\begin{center}
+\includegraphics[width=10cm, clip, trim=5.5cm 18cm 5.5cm
+4cm]{iterator.pdf}
+\end{center}
+
+Le moniteur passe dans l'état \texttt{Next} après un appel à \texttt{hasNext()}
+et dans l'état \texttt{HasNext} après un appel à \texttt{next()}. Un appel à
+\texttt{next()} est autorisé que dans l'état \texttt{Next}. Les classes
+\texttt{AspectJ} utilisée sont celles fournies.
+
+\subsection{Tests}
+
+Les tests sont les suivants :
+
+\begin{itemize}
+  \item \texttt{Iterator\_OK.java} : parcourt de deux \texttt{Vector} avec appel
+  à \texttt{next()} dans une boucle qui test \texttt{hasNext()}.
+  \item \texttt{Iterator\_ERROR\_DOUBLE\_NEXT.java} : parcourt de deux
+  \texttt{Vector} avec deux appels à \texttt{next()} dans une boucle qui test
+  \texttt{hasNext()}. Le deuxième appel provoque une erreur.
+\end{itemize}
+
+\subsection{Overhead}
+
+La classe \texttt{Iterator\_INTENSE\_USE.java} permet de mesurer l'overhead en
+temps.
+La fonction principale parcourt un grand nombre d'\texttt{Iterator}. Les paramètres
+et les résultats de cette mesure sont les suivants :
+
+\vspace{0.3cm}
+\begin{verbatim}
+     /**
+     * Aj : AjParametricHasNext.aj
+     * Config : no print in monitors 
+     * Number of exec : 100
+     * 
+     *                      avg execution time with monitor      (137.14)
+     * Overhead in time = ------------------------------------ = ------- = 8.29
+     *                     avg execution time without monitor    (16.54)
+     */
+\end{verbatim}
+
+
+\section{Enumeration}
+
+\subsection{Monitor}
+
+L'automate implémenté est le
+suivant :
+
+\begin{center}
+\includegraphics[width=14.5cm, clip, trim=3cm 12.5cm 0cm
+4cm]{enumeration.pdf}
+\end{center}
+
+L'évènement \texttt{update} permet de mettre à jour l'état d'un \texttt{Vector}.
+L'évènement \texttt{init} permet de stocker l'état d'un \texttt{Vector} au
+moment de son assignation dans une \texttt{Enumeration}. À chaque appel à
+\texttt{nextElement()}, le moniteur vérifie que les états sont égaux. Dans notre
+implémentation, une état correspond au nombre de modification
+(\texttt{add(\ldots) or \texttt{remove(\ldots)}}) du \texttt{Vector}. Lors de
+l'initialisation, l'état vaut \texttt{0} et à chaque mise à jour, l'état prend
+la valeur \texttt{state + 1}.
+
+\paragraph{\danger} Un ajout d'un élément suivie d'une suppression immédiate de
+cet élément entre deux appels à \texttt{nextElement()} provoque une erreur même
+si le contenu du \texttt{Vector} est resté identique.
+
+\subsection{AspectJ}
+
+Un appel à \texttt{Vector.add(\ldots)} ou \texttt{Vector.remove(\ldots)} propage
+un évènement \texttt{update}. De plus, un appel à
+\texttt{Enumeration.create(\ldots)} propage un évènement \texttt{init}. Un appel à \texttt{Enumeration.nextElement()}
+propage un évènement \texttt{nextElement}.
+
+\vspace{0.3cm}
+
+La classe \texttt{Enumeration.java} est une classe que nous avons implémentée
+pour faciliter la création des \texttt{pointcut}. En effet, nous n'arrivions pas
+à intercepter la création de l'\texttt{Enumeration} en \texttt{AspectJ}, donc
+nous avons créer une classe intermédiaire qui nous permet d'ajouter une fonction
+\texttt{create(\ldots)} qui est facilement interceptable.
+
+\subsection{Tests}
+
+Les tests sont les suivants :
+
+\begin{itemize}
+  \item \texttt{Enumeration\_OK.java} : 
+  \item \texttt{Enumeration\_ADD.java} : 
+  \item \texttt{Enumeration\_RECREATE.java} :
+  \item \texttt{Enumeration\_ERROR\_ADD.java} : 
+  \item \texttt{Enumeration\_ERROR\_ADD\_REMOVE.java} : 
+  \item \texttt{Enumeration\_ERROR\_LAST.java} : 
+\end{itemize}
+
+\subsection{Overhead}
+
+\section{Hashcode}
+
+\subsection{Monitor}
+
+\begin{center}
+\includegraphics[width=16cm, clip, trim=3.5cm 11.5cm 0cm
+4.5cm]{hashcode.pdf}
+\end{center}
+
+\subsection{AspectJ}
+
+\subsection{Tests}
+
+\subsection{Overhead}
+
+\section{File (Q3)}
+
+\subsection{Monitor}
+
+\begin{center}
+\includegraphics[width=16cm, clip, trim=3.5cm 14.5cm 3.5cm
+4.5cm]{q3.pdf}
+\end{center}
+
+\subsection{AspectJ}
+
+\subsection{Tests}
+
+\subsection{Overhead}
+
+\newpage
 
 \paragraph{Description de l'invariant :} Il doit y avoir au maximum 50 incompatibilités renseignées dans le tableau \texttt{incomp}. La valeur de la variable \texttt{nb\_inc} doit être positive et doit être inférieur à 50 car ce nombre est utilisé pour gérer les indices du tableau \texttt{incomp}, il doit donc être situé entre l'indice minimum (0) et l'indice maximum (49).
 
