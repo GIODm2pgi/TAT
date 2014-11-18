@@ -6,32 +6,36 @@
 \begin{center}
 \begin{tikzpicture}[scale=0.2]
 \tikzstyle{every node}+=[inner sep=0pt]
-\draw [black] (35.4,-30.6) circle (3);
-\draw (35.4,-30.6) node {$error$};
-\draw [black] (35.4,-30.6) circle (2.4);
-\draw [black] (58.3,-12.4) circle (3);
-\draw (58.3,-12.4) node {$notmod$};
-\draw [black] (13.9,-12.4) circle (3);
-\draw (13.9,-12.4) node {$modif$};
-\draw [black] (8,-12.4) -- (10.9,-12.4);
-\fill [black] (10.9,-12.4) -- (10.1,-11.9) -- (10.1,-12.9);
-\draw [black] (11.967,-10.121) arc (248.03624:-39.96376:2.25);
-\draw (6.97,-4.84) node [above] {$setModifiable$};
-\fill [black] (14.53,-9.48) -- (15.3,-8.92) -- (14.37,-8.55);
-\draw [black] (14.271,-15.365) arc (34.85553:-253.14447:2.25);
-\draw (5.69,-19.49) node [below] {$modification$};
-\fill [black] (11.77,-14.5) -- (10.83,-14.54) -- (11.4,-15.37);
-\draw [black] (16.726,-11.393) arc (108.22021:71.77979:61.964);
-\fill [black] (55.47,-11.39) -- (54.87,-10.67) -- (54.56,-11.62);
-\draw (36.1,-7.79) node [above] {$setNotModifiable$};
-\draw [black] (55.394,-13.145) arc (-76.65639:-103.34361:83.6);
-\fill [black] (16.81,-13.14) -- (17.47,-13.82) -- (17.7,-12.84);
-\draw (36.1,-15.9) node [below] {$setModifiable$};
-\draw [black] (55.95,-14.27) -- (37.75,-28.73);
-\fill [black] (37.75,-28.73) -- (38.69,-28.63) -- (38.06,-27.84);
-\draw [black] (59.474,-9.652) arc (184.60129:-103.39871:2.25);
-\draw (63.97,-6.56) node [right] {$setNotModifiable$};
-\fill [black] (61.2,-11.66) -- (62.03,-12.09) -- (61.95,-11.1);
+\draw [black] (34.9,-55.4) circle (3);
+\draw (34.9,-55.4) node {$error$};
+\draw [black] (34.9,-55.4) circle (2.4);
+\draw [black] (24.7,-37) circle (3);
+\draw (24.7,-37) node {$notmod$};
+\draw [black] (61.5,-11.4) circle (3);
+\draw (61.5,-11.4) node {$modif$};
+\draw [black] (68.9,-11.4) -- (64.5,-11.4);
+\fill [black] (64.5,-11.4) -- (65.3,-11.9) -- (65.3,-10.9);
+\draw [black] (59.567,-9.121) arc (248.03624:-39.96376:2.25);
+\draw (54.57,-3.84) node [above] {$setModifiable$};
+\fill [black] (62.13,-8.48) -- (62.9,-7.92) -- (61.97,-7.55);
+\draw [black] (62.823,-14.08) arc (54:-234:2.25);
+\draw (61.5,-18.65) node [below] {$modificationColl$};
+\fill [black] (60.18,-14.08) -- (59.3,-14.43) -- (60.11,-15.02);
+\draw [black] (59.04,-13.11) -- (27.16,-35.29);
+\fill [black] (27.16,-35.29) -- (28.1,-35.24) -- (27.53,-34.42);
+\draw (59.1,-24.7) node [below] {$addSet\mbox{ }:\mbox{ }listSet.add(Collection)$};
+\draw [black] (26.076,-34.335) arc (150.79676:98.85222:45.127);
+\fill [black] (58.52,-11.76) -- (57.66,-11.39) -- (57.81,-12.38);
+\draw (16.8,-18.81) node [above] {$removeSet\mbox{ }:\mbox{ }listSet.remove\mbox{ }=>\mbox{ }listSet\mbox{ }empty$};
+\draw [black] (26.15,-39.62) -- (33.45,-52.78);
+\fill [black] (33.45,-52.78) -- (33.49,-51.83) -- (32.62,-52.32);
+\draw (29.13,-47.4) node [left] {$modificationColl$};
+\draw [black] (23.086,-39.515) arc (-4.9598:-292.9598:2.25);
+\draw (18.28,-41.75) node [left] {$addSet\mbox{ }:\mbox{ }listSet.add\mbox{ }...$};
+\fill [black] (21.72,-37.25) -- (20.97,-36.68) -- (20.88,-37.68);
+\draw [black] (27.603,-36.292) arc (131.44473:-156.55527:2.25);
+\draw (32.04,-38.85) node [right] {$removeSet\mbox{ }:\mbox{ }listSet.remove\mbox{ }=>\mbox{ }listSet\mbox{ }not\mbox{ }empty$};
+\fill [black] (27.03,-38.87) -- (27.18,-39.8) -- (27.93,-39.14);
 \end{tikzpicture}
 \end{center}
 
