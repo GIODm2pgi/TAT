@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Tue Nov 18 10:02:56 CET 2014
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=document.tex
+outputFile=RAPPORT_GIRARD_ODIN.pdf
+langSpell=en
+markDer=true
+srcDir=
