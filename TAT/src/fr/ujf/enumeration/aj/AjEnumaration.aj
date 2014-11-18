@@ -31,6 +31,9 @@ public aspect AjEnumaration {
 		case "nextElement":
 			v = enumerationMap.get(e).receiveEvent(Event.nextElement, i);
 			break;
+		case "update":
+			v = enumerationMap.get(e).receiveEvent(Event.update, i);
+			break;
 		default:
 			//unrecognized event => do nothing
 			break;
@@ -44,21 +47,11 @@ public aspect AjEnumaration {
 	pointcut nextEnum(Enumeration t): call (* Enumeration.nextElement()) && target(t) && if(enabled) && within(fr.ujf.enumeration.*);
 
 	before(Vector t) : addDs(t) {
-		if (!VerificationMonitor.dsState.containsKey(System.identityHashCode(t))){
-			VerificationMonitor.dsState.put((Integer) System.identityHashCode(t), 0);
-		}
-		else{
-			VerificationMonitor.dsState.put((Integer) System.identityHashCode(t), VerificationMonitor.dsState.get((Integer) System.identityHashCode(t)) + 1);
-		}
+		dispatchEvent("update", (Integer) System.identityHashCode(t), (Integer) System.identityHashCode(t));
 	}
 
 	before(Vector t) : removeDs(t) {
-		if (!VerificationMonitor.dsState.containsKey(System.identityHashCode(t))){
-			VerificationMonitor.dsState.put(System.identityHashCode(t), 0);
-		}
-		else{
-			VerificationMonitor.dsState.put(System.identityHashCode(t), VerificationMonitor.dsState.get((Integer) System.identityHashCode(t)) + 1);
-		}
+		dispatchEvent("update", (Integer) System.identityHashCode(t), (Integer) System.identityHashCode(t));
 	}
 
 	before (Enumeration t, Vector a) : createEnum(t,a) {

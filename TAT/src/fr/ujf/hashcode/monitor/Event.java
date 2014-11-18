@@ -1,7 +1,7 @@
 package fr.ujf.hashcode.monitor;
 
 public enum Event {
-	modification("modification"), setModifiable("setModifiable"), setNotModifiable("setNotModifiable");
+	modificationColl("modificationColl"), addSet("addSet"), removeSet("removeSet");
 	
 	private String name;
 	Event (String name) {

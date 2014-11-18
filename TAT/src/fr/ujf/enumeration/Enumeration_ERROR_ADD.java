@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import fr.ujf.enumeration.resource.Enumeration;
 
-public class Enumeration_ERROR {
+public class Enumeration_ERROR_ADD {
 
 	public static void main (String args[]) {
 		Vector<Integer> v = new Vector<Integer>();

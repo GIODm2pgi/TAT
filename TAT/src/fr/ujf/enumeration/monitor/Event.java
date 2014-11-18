@@ -1,7 +1,7 @@
 package fr.ujf.enumeration.monitor;
 
 public enum Event {
-	nextElement("nextElement"), init("init");
+	nextElement("nextElement"), init("init"), update("update");
 	
 	private String name;
 	

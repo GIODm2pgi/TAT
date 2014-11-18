@@ -1,9 +1,7 @@
 package fr.ujf.hashcode.aj;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 
 import fr.ujf.hashcode.monitor.Event;
@@ -16,9 +14,8 @@ public aspect AjHashCode {
 	public final static boolean enabled = true;
 
 	HashMap<Integer, VerificationMonitor> collectionMap = new HashMap<Integer, VerificationMonitor>();
-	HashMap<Integer, List<Integer>> mapCollToColls = new HashMap<Integer, List<Integer>>();
 
-	public Verdict dispatchEvent(String concreteEventName, Integer c) {
+	public Verdict dispatchEvent(String concreteEventName, Integer c, Integer i) {
 
 		Verdict v = null;
 
@@ -28,14 +25,14 @@ public aspect AjHashCode {
 		}
 
 		switch (concreteEventName) {
-		case "setModifiable":
-			v = collectionMap.get(c).receiveEvent(Event.setModifiable);
+		case "modificationColl":
+			v = collectionMap.get(c).receiveEvent(Event.modificationColl, i);
 			break;
-		case "setNotModifiable":
-			v = collectionMap.get(c).receiveEvent(Event.setNotModifiable);
+		case "addSet":
+			v = collectionMap.get(c).receiveEvent(Event.addSet, i);
 			break;
-		case "modification":
-			v = collectionMap.get(c).receiveEvent(Event.modification);
+		case "removeSet":
+			v = collectionMap.get(c).receiveEvent(Event.removeSet, i);
 			break;
 		default:
 			//unrecognized event => do nothing
@@ -50,27 +47,20 @@ public aspect AjHashCode {
 	pointcut removeCollection(Collection t, Object a): call (* Collection.remove( * )) && target(t) && args(a) && if(enabled) && !within(AjHashCode) && within(fr.ujf.hashcode.*);
 
 	before(Collection t, Object a) : addCollection(t,a) {
-		dispatchEvent("modification", System.identityHashCode(t));
+		if (!(t instanceof Set))
+			dispatchEvent("modificationColl", System.identityHashCode(t), null);
 	}
-	
+
 	before(Collection t, Object a) : removeCollection(t,a) {
-		dispatchEvent("modification", System.identityHashCode(t));
+		if (!(t instanceof Set))
+			dispatchEvent("modificationColl", System.identityHashCode(t), null);
 	}
 
 	before(Set t, Collection a) : addSet(t,a) {
-		if (mapCollToColls.containsKey(System.identityHashCode(a))){
-			mapCollToColls.get(System.identityHashCode(a)).add(System.identityHashCode(t));
-		}
-		else {
-			mapCollToColls.put(System.identityHashCode(a), new ArrayList<Integer>());
-			mapCollToColls.get(System.identityHashCode(a)).add((Integer) System.identityHashCode(t));
-			dispatchEvent("setNotModifiable", System.identityHashCode(a));
-		}
+		dispatchEvent("addSet", System.identityHashCode(a), System.identityHashCode(t));
 	}
 
 	before(Set t, Collection a) : removeSet(t,a) {
-		mapCollToColls.get(System.identityHashCode(a)).remove((Integer) System.identityHashCode(t));
-		if (mapCollToColls.get(System.identityHashCode(a)).size() == 0)		
-			dispatchEvent("setModifiable", System.identityHashCode(a));
+		dispatchEvent("removeSet", System.identityHashCode(a), System.identityHashCode(t));
 	}
 }

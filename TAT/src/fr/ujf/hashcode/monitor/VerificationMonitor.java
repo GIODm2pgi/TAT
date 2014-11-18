@@ -1,11 +1,16 @@
 package fr.ujf.hashcode.monitor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class VerificationMonitor {
 
 	private static final int DEFAULT_ID = -1;
 	private int id;
 
+	private List<Integer> listSet = new ArrayList<Integer>();
+	
 	private State currentState = State.Modifiable;
 	
 	public VerificationMonitor() {
@@ -16,27 +21,32 @@ public class VerificationMonitor {
 		this.id = id;
 	}
 
-	public void updateState(Event e) {
+	public void updateState(Event e, Integer i) {
 		switch (this.currentState) {
 		case Modifiable:
 			switch (e) {
-			case setNotModifiable: 
+			case modificationColl:
+				break;
+			case addSet:
+				listSet.add(i);
 				this.currentState = State.NotModifiable;
 				break;
-			case setModifiable:
-			case modification:
+			default: 
 				break;
 			}
 			break;
 		case NotModifiable:
-			switch (e) {
-			case setModifiable:
-				this.currentState = State.Modifiable;
-				break;			
-			case modification:
+			switch (e) {		
+			case modificationColl:
 				this.currentState = State.Error;
 				break;
-			case setNotModifiable:
+			case addSet:
+				listSet.add(i);
+				break;
+			case removeSet:
+				listSet.remove((Integer) i);
+				if (listSet.isEmpty())
+					this.currentState = State.Modifiable;
 				break;
 			}
 			break;
@@ -62,9 +72,9 @@ public class VerificationMonitor {
 		System.out.println("Monitor "+this.id+": "+currentVerdict());
 	}
 
-	public Verdict receiveEvent(Event e) {
+	public Verdict receiveEvent(Event e, Integer i) {
 		System.out.println("=> Monitor "+this.id+": received event "+e);
-		updateState(e);
+		updateState(e, i);
 		emitVerdict();
 		return currentVerdict();
 	}

@@ -13,9 +13,9 @@ public class VerificationMonitor {
 	public static HashMap<Integer, Integer> dsState = new HashMap<Integer, Integer>();
 	private Integer state;
 	private Integer ds;
-	
+
 	private State currentState = State.Normal;
-	
+
 	public VerificationMonitor() {
 		this.id = DEFAULT_ID;
 	}
@@ -39,6 +39,11 @@ public class VerificationMonitor {
 					this.currentState = State.Error;
 				break;
 			}
+			case update:
+				if (!dsState.containsKey((Integer) v))
+					dsState.put((Integer) v, 0);
+				else
+					dsState.put((Integer) v, dsState.get((Integer) v) + 1);
 			default:
 				break;
 			}
