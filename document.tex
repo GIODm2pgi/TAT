@@ -81,9 +81,9 @@ et dans l'état \texttt{HasNext} après un appel à \texttt{next()}. Un appel à
 Les tests sont les suivants :
 
 \begin{itemize}
-  \item \texttt{Iterator\_OK.java} : parcourt de deux \texttt{Vector} avec appel
+  \item \texttt{Iterator\_OK.java} : parcours de deux \texttt{Vector} avec appel
   à \texttt{next()} dans une boucle qui test \texttt{hasNext()}.
-  \item \texttt{Iterator\_ERROR\_DOUBLE\_NEXT.java} : parcourt de deux
+  \item \texttt{Iterator\_ERROR\_DOUBLE\_NEXT.java} : parcours de deux
   \texttt{Vector} avec deux appels à \texttt{next()} dans une boucle qui test
   \texttt{hasNext()}. Le deuxième appel provoque une erreur.
 \end{itemize}
@@ -107,7 +107,6 @@ et les résultats de cette mesure sont les suivants :
      *                     avg execution time without monitor    (16.54)
      */
 \end{verbatim}
-
 
 \section{Enumeration}
 
@@ -154,15 +153,42 @@ nous avons créer une classe intermédiaire qui nous permet d'ajouter une foncti
 Les tests sont les suivants :
 
 \begin{itemize}
-  \item \texttt{Enumeration\_OK.java} : 
-  \item \texttt{Enumeration\_ADD.java} : 
-  \item \texttt{Enumeration\_RECREATE.java} :
-  \item \texttt{Enumeration\_ERROR\_ADD.java} : 
-  \item \texttt{Enumeration\_ERROR\_ADD\_REMOVE.java} : 
-  \item \texttt{Enumeration\_ERROR\_LAST.java} : 
+  \item \texttt{Enumeration\_OK.java} : parcours de deux \texttt{Enumeration} sans modification des \texttt{Vector}.
+  \item \texttt{Enumeration\_ADD.java} : parcours de deux \texttt{Enumeration}
+  avec modification des \texttt{Vector} après le parcours.
+  \item \texttt{Enumeration\_RECREATE.java} : parcours de deux \texttt{Enumeration}
+  avec modification des \texttt{Vector} puis re-création et un nouveau
+  parcours.
+  \item \texttt{Enumeration\_ERROR\_ADD.java} : parcours de deux \texttt{Enumeration}
+  avec modification des \texttt{Vector} pendant le parcours.
+  \item \texttt{Enumeration\_ERROR\_ADD\_REMOVE.java} : parcours de deux \texttt{Enumeration}
+  avec modifications des \texttt{Vector} (add puis remove) pendant le parcours.
+  Ce test montre que des modifications qui ne change pas l'état de l'objet
+  provoque quand même une erreur.
+  \item \texttt{Enumeration\_ERROR\_LAST.java} : parcours de deux \texttt{Enumeration}
+  avec modification des \texttt{Vector} (ajout) pendant le parcours à la
+  dernière itération.
 \end{itemize}
 
 \subsection{Overhead}
+
+La classe \texttt{Enumeration\_INTENSE\_USE.java} permet de mesurer l'overhead
+en temps.
+La fonction principale exécute un grand nombre de fois les tests donnant un
+résultat valide.
+
+\vspace{0.3cm}
+\begin{verbatim}
+     /**
+     * Aj : AjEnumeration.aj
+     * Config : no print in monitors 
+     * Number of exec : 100
+     * 
+     *                       avg execution time with monitor     (123.72)
+     * Overhead in time = ------------------------------------ = ------- = 41.94
+     *                     avg execution time without monitor     (2.95)
+     */
+\end{verbatim}
 
 \section{Hashcode}
 
@@ -170,7 +196,7 @@ Les tests sont les suivants :
 
 \begin{center}
 \includegraphics[width=16cm, clip, trim=3.5cm 11.5cm 0cm
-4.5cm]{hashcode.pdf}
+6.33cm]{hashcode.pdf}
 \end{center}
 
 \subsection{AspectJ}
